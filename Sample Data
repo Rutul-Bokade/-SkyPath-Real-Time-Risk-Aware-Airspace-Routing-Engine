@@ -1,0 +1,18 @@
+### airports.csv
+
+"IATA","Name","City","Country","Latitude","Longitude"
+"LAX","Los Angeles International Airport","Los Angeles","USA",33.9416,-118.4085
+"BOM","Chhatrapati Shivaji Maharaj International Airport","Mumbai","India",19.0896,72.8656
+"DXB","Dubai International Airport","Dubai","UAE",25.2532,55.3657
+"TLV","Ben Gurion Airport","Tel Aviv","Israel",32.0114,34.8867
+"IST","Istanbul Airport","Istanbul","Turkey",41.2753,28.7519
+"DOH","Hamad International Airport","Doha","Qatar",25.2736,51.6082
+
+### sample_NOTAMs.csv
+
+"NOTAM_ID","Airport_IATA","Text","Start_Date","End_Date","Risk_Level"
+"N001","BOM","Runway maintenance - closed for 3 days",2026-03-01,2026-03-04,0.7
+"N002","DXB","Temporary airspace restriction due to military exercises",2026-03-02,2026-03-05,0.9
+"N003","TLV","Limited operations due to security alert",2026-03-01,2026-03-03,0.8
+"N004","IST","Navigation system upgrade - partial closure",2026-03-03,2026-03-06,0.6
+"N005","DOH","Routine inspection affecting departure slots",2026-03-02,2026-03-04,0.5
