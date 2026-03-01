@@ -1,0 +1,35 @@
+# SkyPath - Model Development
+
+# 1️⃣ Install dependencies (for Colab)
+!pip install pandas numpy networkx folium matplotlib seaborn
+
+# 2️⃣ Imports
+import pandas as pd
+import networkx as nx
+from models.risk_engine import RiskEngine
+from models.optimizer import RouteOptimizer
+
+# 3️⃣ Load data
+airports_df = pd.read_csv('../data/airports.csv')
+notams_df = pd.read_csv('../data/sample_NOTAMs.csv')
+
+# 4️⃣ Initialize risk engine and optimizer
+risk_engine = RiskEngine(notam_file='../data/sample_NOTAMs.csv')
+optimizer = RouteOptimizer(airports_file='../data/airports.csv')
+
+# 5️⃣ Build airport graph
+optimizer.build_graph()
+
+# 6️⃣ Compute risks for a sample date
+risks = risk_engine.get_all_risks('2026-03-02')
+optimizer.assign_risk(risks)
+
+# 7️⃣ Compute optimal route (example: LAX -> BOM)
+path = optimizer.compute_optimal_route('LAX', 'BOM', lambda_risk=1.5)
+print('Optimal route:', path)
+
+# 8️⃣ Optional: visualize graph nodes (basic)
+import matplotlib.pyplot as plt
+pos = {node:(data['lon'], data['lat']) for node, data in optimizer.G.nodes(data=True)}
+nx.draw(optimizer.G, pos, with_labels=True, node_size=500, node_color='lightblue')
+plt.show()
